@@ -10,7 +10,7 @@ The script is very much currently a proof of concept. The concept is, This will 
   
   **But not**
  - AMBED (along with the required AMBE chips)
- - AMBED can be installed locally or on a remote server, but is required for the transcoding part. 
+ - *AMBED can be installed locally or on a remote server, but is required for the transcoding part.* 
   
 #### You will need the following information to get started:
  - Ready to go **and updated** fresh install of Debian 9.x
