@@ -1,14 +1,15 @@
 #!/bin/bash
 # This script will install, XLXD, YSFREFlector, and YSF2DMR
 # for the purpose of having a tri mode transcoding server.
-# This will also install the service's respective dashboards,
-# configure the webserver and install SSL for the sites.
-# For now, because of the ease of install for ambed, it will
-# not be installed via this script....at least as version .01.
-# 1. Install xlxd
-# 2. Install YSFReflector
-# 3. Install YSF2DMR
-# 4. Install and configure SSL for the dashboards
+# This will also install the service's respective dashboards
+# and configure apache.
+# Because of the simplicity around installing AMBED, it will
+# not be installed via this script. I dont know where
+# you will install it and building logic around that will take
+# time. When Version 1 gets released, it will have that feature,
+# along with many more. 
+# This script is just a proof of concept and will be itterated over time.
+# Stay tuned...
 
 #Lets begin-------------------------------------------------------------------------------------------------
 #Sanity checks
@@ -69,6 +70,7 @@ echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sourc
 apt update
 apt -y install git build-essential apache2 php libapache2-mod-php php7.0-mbstring screen wget python-certbot-apache -t stretch-backports
 a2enmod php7.0
+echo "------------------------------------------------------------------------------"
 #Create the install directory and app directories
 echo "Making directories...."
 mkdir -p /root/reflector-install-files
@@ -80,7 +82,7 @@ mkdir -p /var/www/xlxd
 mkdir -p /var/www/ysf
 mkdir -p /ysfreflector
 mkdir -p /ysf2dmr
-
+echo "------------------------------------------------------------------------------"
 #Install xlxd
 #If the file is here already, then we dont need to compile on top of it. Remove the git clone directory and start over.
 if [ -e /root/reflector-install-files/xlxd/xlxd/src/xlxd ]
