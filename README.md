@@ -10,6 +10,7 @@ The script is very much currently a proof of concept. The concept is, This will 
   
   **But not**
  - AMBED (along with the required AMBE chips)
+ - AMBED can be installed locally or on a remote server, but is required for the transcoding part. 
   
 #### You will need the following information to get started:
  - Ready to go **and updated** fresh install of Debian 9.x
@@ -21,7 +22,7 @@ The script is very much currently a proof of concept. The concept is, This will 
  - ysfreflector.ini
  - xlxd config.inc.php & init.d file
  
-#### To give you a visual idea of what the end result would look like, Here is a diagram of XLX410 which is installed based off this method. AMBED can be installed locally or on a remote server. 
+#### To give you a visual idea of what the end result would look like, Here is a diagram of XLX410 which is installed based off this method.
 
 ![Reflector setup](https://sadigitalradio.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
 
