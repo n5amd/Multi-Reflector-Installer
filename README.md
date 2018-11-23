@@ -26,4 +26,4 @@ The script is very much currently a proof of concept. The concept is, This will 
 ![Reflector setup](https://sadigitalradio.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
 
 ### For more information, please visit:
-https://sadigitalradio.com/digital-radio-how-tos/create-xlx-xrf-d-star-reflector/
+https://sadigitalradio.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
