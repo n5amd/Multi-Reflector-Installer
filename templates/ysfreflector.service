@@ -1,0 +1,10 @@
+[Unit]
+Description=YSFReflector
+
+[Service]
+Type=forking
+ExecStart=/ysfreflector/YSFReflector /ysfreflector/YSFReflector.ini
+
+[Install]
+WantedBy=multi-user.target
+Alias=ysfreflector.service
