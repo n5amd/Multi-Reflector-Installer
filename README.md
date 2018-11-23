@@ -15,7 +15,7 @@ The script is very much currently a proof of concept. The concept is, This will 
  - FQDN for ysf and xlx
  - XLX number that isnt taken (or pick a random one for testing)
  
-The script does not yet configure the ini or config files which you will have to do:
+#### The script does not yet configure the ini or config files which you will have to do:
  - ysf2dmr.ini
  - ysfreflector.ini
  - xlxd config.inc.php & init.d file
