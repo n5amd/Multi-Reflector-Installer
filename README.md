@@ -9,7 +9,7 @@ The script is very much currently a proof of concept. The concept is, This will 
   - Apache2 and configure the virtualhosts for both dashboards
   
   **But not**
- - AMBED (along with the required AMBED chips)
+ - AMBED (along with the required AMBE chips)
   
 #### You will need the following information to get started:
  - Ready to go **and updated** fresh install of Debian 9.x
