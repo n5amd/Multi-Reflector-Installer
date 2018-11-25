@@ -5,7 +5,7 @@ The script is very much currently a proof of concept and gets you about 90% of t
   - XLXD *(D-Star/DMR Reflector that also communicates with AMBED)*
   - YSFReflector *(HomeBrew Fusion Reflector)*
   - YSF2DMR *(The bridge software between YSF and XLX)*
-  - YSF and XLX Dashboards *(Web page that shows real-time activity)*
+  - YSF and XLX Dashboards *(Web pages that shows real-time activity)*
   - Apache2 and configure the virtualhosts for both dashboards
   
   **But not**
