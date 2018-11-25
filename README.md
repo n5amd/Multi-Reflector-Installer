@@ -2,10 +2,10 @@
 The script is very much currently a proof of concept and gets you about 90% of the way to have everything fully installed and configured. The concept is, This will build you a 3 mode Ham radio digital voice reflector server that will transcode Yaesu Fusion, DMR, and D-Star with the help of AMBED and AMBE vocoder chips. I did not build each application. This script simply goes through the install steps for each application for you and configures apache for the dashboards. Features and abilities coming...
 
 #### This script will install the following:
-  - XLXD
-  - YSFReflector
-  - YSF2DMR
-  - YSF Dashboard
+  - XLXD *(D-Star/DMR Reflector that also communicates with AMBED)*
+  - YSFReflector *(HomeBrew Fusion Reflector)*
+  - YSF2DMR *(The bridge software between YSF and XLX)*
+  - YSF and XLX Dashboards *(Web page that shows real-time activity)*
   - Apache2 and configure the virtualhosts for both dashboards
   
   **But not**
