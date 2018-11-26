@@ -7,7 +7,7 @@
 # not be installed via this script. I dont know where
 # you will install it and building logic around that will take
 # time. When Version 1 gets released, it will have that feature,
-# along with many more. 
+# along with many more.
 # This script is just a proof of concept and will be itterated over time.
 # Stay tuned...
 
@@ -66,7 +66,7 @@ echo "--------------------------------------------------------------------------
 echo ""
 echo "Installing dependicies..........."
 echo ""
-echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
+#echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list #Required when SSL gets added, not yet though.
 apt update
 apt -y install git build-essential apache2 php libapache2-mod-php php7.0-mbstring screen wget python-certbot-apache -t stretch-backports
 a2enmod php7.0
