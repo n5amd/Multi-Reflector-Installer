@@ -44,7 +44,7 @@ cd Multi-Reflector-Installer
  
  **YSFReflector**
   ```sh
- systemctl systemctl start|stop|status|restart ysfreflector
+ systemctl start|stop|status|restart ysfreflector
  ```
   - Installs to /ysfreflector
   - Logs are in /var/log/YSFReflector
