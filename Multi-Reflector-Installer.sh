@@ -118,7 +118,7 @@ cd /root/reflector-install-files/xlxd/
 cp -R /root/reflector-install-files/xlxd/xlxd/dashboard/* /var/www/xlxd/
 cp /root/reflector-install-files/xlxd/xlxd/scripts/xlxd /etc/init.d/xlxd
 #Update up the startup script
-sed -i "s/ARGUMENTS=\"XLX270 158.64.26.132\"/ARGUMENTS=\"$XRFDIGIT $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
+sed -i "s/ARGUMENTS=\"XLX270 158.64.26.132\"/ARGUMENTS=\"XLX$XRFDIGIT $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
 update-rc.d xlxd defaults
 echo "XLXD is finished installing and ready to be configured. Moving onto YSF....."
 #If the file is here already, then we dont need to compile on top of it. Remove the git clone directory and start over.
