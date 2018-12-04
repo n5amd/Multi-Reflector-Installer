@@ -53,7 +53,7 @@ cd Multi-Reflector-Installer
  
  I havent been able to make a working Systemd unit file for this yet. So this app will simply have to run in screen.
  ```sh
- Screen -S ysf2dmr
+ screen -S ysf2dmr
  cd /ysf2dmr
  ./YSF2DMR YSF2DMR.ini
  ```
