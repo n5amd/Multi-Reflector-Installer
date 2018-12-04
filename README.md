@@ -58,7 +58,7 @@ cd Multi-Reflector-Installer
  ./YSF2DMR YSF2DMR.ini
  ```
  
-  To exit the screen session to leave the program running:
+  To exit the screen session and leave ysf2dmr running:
   ```sh
   ctrl-a, then press d
   ```
