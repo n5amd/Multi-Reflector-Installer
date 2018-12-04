@@ -59,11 +59,28 @@ cd Multi-Reflector-Installer
   ```sh
   ctrl-a, then press d
   ```
+
+ 
+ ### Linking to AMBED for transcoding:
+ Once you have AMBED installed and its up and running, simply edit the /etc/init.d file.
+ ```sh
+ nano or vi /etc/init.d/xlxd
+ ```
+ Edit the ARGUMENTS line
+ ```sh
+ ARGUMENTS="XLX### <YOUR IP> <IP OF AMBED>" #Use 127.0.0.1 if ambed is on the same computer as XLXD
+ EX: ARGUMENTS="XLX111 192.168.0.2 127.0.0.1"
+ ```
+ Then reload rc.d
+ ```sh
+ update-rc.d xlxd defaults
+ ```
+ --------------------
   
 #### To give you a visual idea of what the end result would look like, here are 2 scenarios..
 
 ## Scenario A :
-Cloud Server installation allowing for worldwide connectivity. Here is XLX410 as an example..
+Cloud Server installation allowing for worldwide connectivity like a typical reflector. Here is XLX410 as an example..
 
 ![Reflector setup](https://sadigitalradio.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
 
