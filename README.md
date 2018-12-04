@@ -50,28 +50,33 @@ cd Multi-Reflector-Installer
   - Logs are in /var/log/YSFReflector
  
  **YSF2DMR**
+ I havent been able to make a working Systemd unit file for this yet. So this app will simply have to run in screen.
  ```sh
  Screen -S ysf2dmr
  cd /ysf2dmr
  ./YSF2DMR YSF2DMR.ini
  ```
+ 
   To exit the screen session to leave the program running:
   ```sh
   ctrl-a, then press d
   ```
-
+To return to the screen session:
+```sh
+screen -r ysf2dmr
+```
  
  ### Linking to AMBED for transcoding:
  Once you have AMBED installed and its up and running, simply edit the /etc/init.d file.
  ```sh
  nano or vi /etc/init.d/xlxd
  ```
- Edit the ARGUMENTS line
+ Edit the ARGUMENTS line:
  ```sh
  ARGUMENTS="XLX### <YOUR IP> <IP OF AMBED>" #Use 127.0.0.1 if ambed is on the same computer as XLXD
  EX: ARGUMENTS="XLX111 192.168.0.2 127.0.0.1"
  ```
- Then reload rc.d
+ Then update rc.d to read the updated init file:
  ```sh
  update-rc.d xlxd defaults
  ```
