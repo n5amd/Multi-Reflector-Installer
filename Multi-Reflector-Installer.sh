@@ -29,12 +29,21 @@ then
   exit 0
 fi
 #Gather variables.
+DIRDIR=$(pwd)
 XLXDREPO=https://github.com/LX3JL/xlxd.git
 YSF2DMRREPO=https://github.com/juribeparada/MMDVM_CM.git
 YSFREPO=https://github.com/g4klx/YSFClients.git
 YSFDASHREPO=https://github.com/dg9vh/YSFReflector-Dashboard.git
+XLXDMRIDURL=http://xlxapi.rlx.lu/api/exportdmr.php
 LOCAL_IP=$(ip a | grep inet | grep "eth0\|en" | awk '{print $2}' | tr '/' ' ' | awk '{print $1}')
-DIRDIR=$(pwd)
+XLXINTDIR=/root/reflector-install-files/xlxd
+YSFINTDIR=/root/reflector-install-files/ysfreflector
+YSF2INTDIR=/root/reflector-install-files/ysf2dmr
+YSFDASDIR=/root/reflector-install-files/ysfdash
+XLXWEBDIR=/var/www/xlxd
+YSFWEBDIR=/var/www/ysf
+DEP="git build-essential apache2 php libapache2-mod-php php7.0-mbstring screen wget"
+
 echo "------------------------------------------------------------------------------"
 echo ""
 echo "XLX uses 3 digits numbers for its reflectors. For example: 032, 723, 099"
@@ -68,39 +77,38 @@ echo "Installing dependicies..........."
 echo ""
 #echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list #Required when SSL gets added, not yet though.
 apt update
-apt -y install git build-essential apache2 php libapache2-mod-php php7.0-mbstring screen wget python-certbot-apache -t stretch-backports
+apt -y install $DEP
 a2enmod php7.0
 echo "------------------------------------------------------------------------------"
 #Create the install directory and app directories
 echo "Making directories...."
-mkdir -p /root/reflector-install-files
-mkdir -p /root/reflector-install-files/xlxd
-mkdir -p /root/reflector-install-files/ysfreflector
-mkdir -p /root/reflector-install-files/ysf2dmr
-mkdir -p /root/reflector-install-files/ysfdash
-mkdir -p /var/www/xlxd
-mkdir -p /var/www/ysf
+mkdir -p $XLXINTDIR
+mkdir -p $YSFINTDIR
+mkdir -p $YSF2INTDIR
+mkdir -p $YSFDASDIR
+mkdir -p $XLXWEBDIR
+mkdir -p $YSFWEBDIR
 mkdir -p /ysfreflector
 mkdir -p /ysf2dmr
 echo "------------------------------------------------------------------------------"
 #Install xlxd
 #If the file is here already, then we dont need to compile on top of it. Remove the git clone directory and start over.
-if [ -e /root/reflector-install-files/xlxd/xlxd/src/xlxd ]
+if [ -e $XLXINTDIR/xlxd/src/xlxd ]
 then
    echo ""
    echo "It looks like you have already compiled XLX. If you want to install it again, delete the directory '/root/reflector-install-files' and run this script again. "
    exit 0
 else
    echo "Downloading and compiling xlxd... "
-   cd /root/reflector-install-files/xlxd
+   cd $XLXINTDIR
    git clone $XLXDREPO
-   cd /root/reflector-install-files/xlxd/xlxd/src
+   cd $XLXINTDIR/xlxd/src
    make clean
    make
    make install
 fi
 #Now the file should be there, if it compiled correctly.
-if [ -e /root/reflector-install-files/xlxd/xlxd/src/xlxd ]
+if [ -e $XLXINTDIR/xlxd/src/xlxd ]
 then
    echo "------------------------------------------------------------------------------"
    echo "It looks like everything compiled successfully. There is a 'xlxd' application file. "
@@ -112,17 +120,17 @@ else
    exit 0
 fi
 #get DMR files
-wget -O /xlxd/dmrid.dat http://xlxapi.rlx.lu/api/exportdmr.php
+wget -O /xlxd/dmrid.dat $XLXDMRIDURL
 #Copy files over
-cd /root/reflector-install-files/xlxd/
-cp -R /root/reflector-install-files/xlxd/xlxd/dashboard/* /var/www/xlxd/
-cp /root/reflector-install-files/xlxd/xlxd/scripts/xlxd /etc/init.d/xlxd
+cd $XLXINTDIR/
+cp -R $XLXINTDIR/xlxd/dashboard/* $XLXWEBDIR/
+cp $XLXINTDIR/xlxd/scripts/xlxd /etc/init.d/xlxd
 #Update up the startup script
-sed -i "s/ARGUMENTS=\"XLX270 158.64.26.132\"/ARGUMENTS=\"XLX$XRFDIGIT $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
+sed -i "s/ARGUMENTS=\"XLX270 158.64.26.132\"/ARGUMENTS=\"$XFRNUM $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
 update-rc.d xlxd defaults
 echo "XLXD is finished installing and ready to be configured. Moving onto YSF....."
 #If the file is here already, then we dont need to compile on top of it. Remove the git clone directory and start over.
-if [ -e /root/reflector-install-files/ysfreflector/YSFClients/YSFReflector/YSFReflector ]
+if [ -e $YSFINTDIR/YSFClients/YSFReflector/YSFReflector ]
 then
    echo ""
    echo "It looks like you have already compiled YSFReflector. If you want to install it again, delete the directory '/root/YSFReflector-install-files' and run this script again. "
@@ -130,13 +138,13 @@ then
 else
    echo "------------------------------------------------------------------------------"
    echo "Downloading and compiling YSFReflector... "
-   cd /root/reflector-install-files/ysfreflector
+   cd $YSFINTDIR
    git clone https://github.com/g4klx/YSFClients.git
-   cd /root/reflector-install-files/ysfreflector/YSFClients/YSFReflector
+   cd $YSFINTDIR/YSFClients/YSFReflector
    make clean all
 fi
 #Now the file should be there, if it compiled correctly.
-if [ -e /root/reflector-install-files/ysfreflector/YSFClients/YSFReflector/YSFReflector ]
+if [ -e $YSFINTDIR/YSFClients/YSFReflector/YSFReflector ]
 then
    echo "------------------------------------------------------------------------------"
    echo "It looks like everything compiled successfully. There is a 'YSFReflector' application file. "
@@ -151,8 +159,8 @@ echo "--------------------------------------------------------------------------
 #Copying over files.
 echo ""
 echo "Copying files over to the executable directory.... "
-cp /root/reflector-install-files/ysfreflector/YSFClients/YSFReflector/YSFReflector /ysfreflector
-cp /root/reflector-install-files/ysfreflector/YSFClients/YSFReflector/YSFReflector.ini /ysfreflector
+cp $YSFINTDIR/YSFClients/YSFReflector/YSFReflector /ysfreflector
+cp $YSFINTDIR/YSFClients/YSFReflector/YSFReflector.ini /ysfreflector
 
 
 #Updating the ini file
@@ -171,7 +179,7 @@ mkdir -p /var/log/YSFReflector
 chown mmdvm: /var/log/YSFReflector
 echo "------------------------------------------------------------------------------"
 echo "Installing YSF2DMR... "
-if [ -e /root/reflector-install-files/ysf2dmr/MMDVM_CM/YSF2DMR/YSF2DMR ]
+if [ -e $YSF2INTDIR/MMDVM_CM/YSF2DMR/YSF2DMR ]
 then
    echo ""
    echo "It looks like you have already compiled YSFReflector. If you want to install it again, delete the directory '/root/reflector-install-files' and run this script again. "
@@ -179,13 +187,13 @@ then
 else
    echo ""
    echo "Downloading and compiling YSFReflector... "
-   cd /root/reflector-install-files/ysf2dmr
+   cd $YSF2INTDIR
    git clone $YSF2DMRREPO
-   cd /root/reflector-install-files/ysf2dmr/MMDVM_CM/YSF2DMR/
+   cd $YSF2INTDIR/MMDVM_CM/YSF2DMR/
    make
 fi
 #Now the file should be there, if it compiled correctly.
-if [ -e /root/reflector-install-files/ysf2dmr/MMDVM_CM/YSF2DMR/YSF2DMR ]
+if [ -e $YSF2INTDIR/MMDVM_CM/YSF2DMR/YSF2DMR ]
 then
    echo "------------------------------------------------------------------------------"
    echo "It looks like everything compiled successfully. There is a 'YSF2DMR' application file. "
@@ -195,7 +203,7 @@ else
    exit 0
 fi
 #Copying files over
-cd /root/reflector-install-files/ysf2dmr/MMDVM_CM/YSF2DMR/
+cd $YSF2INTDIR/MMDVM_CM/YSF2DMR/
 cp YSF2DMR /ysf2dmr/
 cp YSF2DMR.ini /ysf2dmr/
 cp DMRIds.dat /ysf2dmr/
@@ -203,9 +211,12 @@ cp XLXHosts.txt /ysf2dmr/
 
 echo "------------------------------------------------------------------------------"
 echo "Installing the YSF Dashboard... "
-cd /root/reflector-install-files/ysfdash
+cd $YSFDASDIR
 git clone $YSFDASHREPO
-cp -R /root/reflector-install-files/ysfdash/YSFReflector-Dashboard/* /var/www/ysf/
+cp -R $YSFDASDIR/YSFReflector-Dashboard/* $YSFWEBDIR/
+mkdir $YSFWEBDIR/config
+cp $DIRDIR/templates/config.php $YSFWEBDIR/config/
+mv $YSFWEBDIR/setup.php $YSFDASDIR/original-setup.php
 
 echo "------------------------------------------------------------------------------"
 #Copy apache vhost directives
