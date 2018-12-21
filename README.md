@@ -68,7 +68,8 @@ screen -r ysf2dmr
 ```
  
  ### Linking to AMBED for transcoding:
- Once you have AMBED installed and its up and running, simply edit the /etc/init.d file.
+ 1. Install AMBED: https://github.com/n5amd/ambed-debian-installer
+ 2. Edit the /etc/init.d file for xlxd.
  ```sh
  nano or vi /etc/init.d/xlxd
  ```
@@ -77,9 +78,9 @@ screen -r ysf2dmr
  ARGUMENTS="XLX### <YOUR IP> <IP OF AMBED>" #Use 127.0.0.1 if ambed is on the same computer as XLXD
  EX: ARGUMENTS="XLX111 192.168.0.2 127.0.0.1"
  ```
- Then update rc.d to read the updated init file:
+ Then update systemd to read the updated init file:
  ```sh
- update-rc.d xlxd defaults
+ systemctl daemon-reload
  ```
  --------------------
   
