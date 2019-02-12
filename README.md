@@ -78,9 +78,10 @@ screen -r ysf2dmr
  ARGUMENTS="XLX### <YOUR IP> <IP OF AMBED>" #Use 127.0.0.1 if ambed is on the same computer as XLXD
  EX: ARGUMENTS="XLX111 192.168.0.2 127.0.0.1"
  ```
- Then update systemd to read the updated init file:
+ Then update systemd to read the updated init file and restart xlxd:
  ```sh
  systemctl daemon-reload
+ systemctl restart xlxd
  ```
  --------------------
   
