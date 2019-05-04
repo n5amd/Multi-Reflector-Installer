@@ -98,4 +98,4 @@ A single tower site installation allowing local communication across 3 different
 ![Single Site](https://sadigitalradio.com/wp-content/uploads/2018/11/Single-repeater-site.png)
 
 ### For more information, please visit:
-https://sadigitalradio.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
+https://n5amd.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
