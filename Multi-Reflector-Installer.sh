@@ -66,6 +66,12 @@ read -p "What is the FQDN of the XLX Reflector dashboard? Example: xlx.domain.co
 echo ""
 read -p "What is the FQDN of the YSF Reflector dashboard? Example: ysf.domain.com  " YSFDOMAIN
 echo "------------------------------------------------------------------------------"
+echo ""
+read -p "What E-Mail address can your users send questions to?  " EMAIL
+echo ""
+echo "--------------------------------------"
+echo ""
+read -p "What is the admins callsign?  " CALLSIGN
 #Gather dependicies
 echo ""
 echo ""
@@ -125,6 +131,10 @@ cp -R $XLXINTDIR/xlxd/dashboard/* $XLXWEBDIR/
 cp $XLXINTDIR/xlxd/scripts/xlxd /etc/init.d/xlxd
 sed -i "s/ARGUMENTS=\"XLX270 158.64.26.132\"/ARGUMENTS=\"$XFRNUM $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
 update-rc.d xlxd defaults
+echo "Updating XLXD Config file... "
+XLXCONFIG=/var/www/xlxd/pgs/config.inc.php
+sed -i "s/your_email/$EMAIL/g" $XLXCONFIG
+sed -i "s/LX1IQ/$CALLSIGN/g" $XLXCONFIG
 echo "--------------------------------------"
 echo "XLXD is finished installing."
 echo "--------------------------------------"
