@@ -178,6 +178,7 @@ mkdir -p /var/log/YSFReflector
 chown mmdvm: /var/log/YSFReflector
 cp $DIRDIR/templates/ysfreflector.service /etc/systemd/system
 systemctl daemon-reload
+systemctl enable ysfreflector
 echo ""
 echo "--------------------------------------"
 echo "YSFReflector is finished installing."
