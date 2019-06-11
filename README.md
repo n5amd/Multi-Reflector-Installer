@@ -90,12 +90,12 @@ screen -r ysf2dmr
 ## Scenario A :
 Cloud Server installation allowing for worldwide connectivity like a typical reflector. Here is XLX410 as an example..
 
-![Reflector setup](https://sadigitalradio.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
+![Reflector setup](https://n5amd.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
 
 ## Scenario B :
 A single tower site installation allowing local communication across 3 different digital modes…
 
-![Single Site](https://sadigitalradio.com/wp-content/uploads/2018/11/Single-repeater-site.png)
+![Single Site](https://n5amd.com/wp-content/uploads/2018/11/Single-repeater-site.png)
 
 ### For more information, please visit:
 https://n5amd.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
