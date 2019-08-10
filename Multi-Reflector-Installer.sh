@@ -94,7 +94,7 @@ mkdir -p /ysf2dmr
 
 #Install xlxd
 #If the file is here already, then we dont need to compile on top of it. Remove the git clone directory and start over.
-if [ -e $XLXINTDIR/xlxd/src/xlxd ]
+if [ -e $XLXINTDIR/src/xlxd ]
 then
    echo ""
    echo "It looks like you have already compiled XLX. If you want to install it again, delete the directory '/root/reflector-install-files/' and run this script again. "
@@ -137,6 +137,9 @@ echo "Updating XLXD Config file... "
 XLXCONFIG=/var/www/xlxd/pgs/config.inc.php
 sed -i "s/your_email/$EMAIL/g" $XLXCONFIG
 sed -i "s/LX1IQ/$CALLSIGN/g" $XLXCONFIG
+sed -i "s/\/tmp\/callinghome.php/\/xlxd\/callinghome.php/g" $XLXCONFIG
+sed -i "s/http:\/\/your_dashboard/$XLXDOMAIN/g" $XLXCONFIG
+#Placeholder
 echo "--------------------------------------"
 echo "XLXD is finished installing."
 echo "--------------------------------------"
