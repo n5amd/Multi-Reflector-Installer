@@ -139,7 +139,8 @@ sed -i "s/your_email/$EMAIL/g" $XLXCONFIG
 sed -i "s/LX1IQ/$CALLSIGN/g" $XLXCONFIG
 sed -i "s/\/tmp\/callinghome.php/\/xlxd\/callinghome.php/g" $XLXCONFIG
 sed -i "s/http:\/\/your_dashboard/$XLXDOMAIN/g" $XLXCONFIG
-#Placeholder
+chown -R www-data:www-data /xlxd/
+chown -R www-data:www-data /var/www/xlxd/
 echo "--------------------------------------"
 echo "XLXD is finished installing."
 echo "--------------------------------------"
@@ -242,7 +243,6 @@ sed -i "s/ysf-xlxd/xlxd/g" /etc/apache2/sites-available/$XLXDOMAIN.conf
 cp $DIRDIR/templates/apache.tbd.conf /etc/apache2/sites-available/$YSFDOMAIN.conf
 sed -i "s/apache.tbd/$YSFDOMAIN/g" /etc/apache2/sites-available/$YSFDOMAIN.conf
 sed -i "s/ysf-xlxd/ysf/g" /etc/apache2/sites-available/$YSFDOMAIN.conf
-
 echo "--------------------------------------"
 echo "Enabling $XLXDOMAIN and $YSFDOMAIN... "
 echo "--------------------------------------"
