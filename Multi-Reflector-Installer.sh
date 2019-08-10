@@ -255,7 +255,7 @@ echo "--------------------------------------"
 service xlxd start
 service ysfreflector start
 echo "--------------------------------------"
-echo "Reloading apace2."
+echo "Reloading apache2."
 echo "--------------------------------------"
 systemctl restart apache2
 echo ""
