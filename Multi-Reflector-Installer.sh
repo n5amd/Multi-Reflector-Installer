@@ -183,8 +183,8 @@ useradd mmdvm -g mmdvm -s /sbin/nologin
 mkdir -p /var/log/YSFReflector
 chown mmdvm: /var/log/YSFReflector
 cp $DIRDIR/templates/ysfreflector.service /etc/systemd/system
-systemctl daemon-reload
 systemctl enable ysfreflector
+systemctl daemon-reload
 echo ""
 echo "--------------------------------------"
 echo "YSFReflector is finished installing."
@@ -243,6 +243,7 @@ sed -i "s/ysf-xlxd/xlxd/g" /etc/apache2/sites-available/$XLXDOMAIN.conf
 cp $DIRDIR/templates/apache.tbd.conf /etc/apache2/sites-available/$YSFDOMAIN.conf
 sed -i "s/apache.tbd/$YSFDOMAIN/g" /etc/apache2/sites-available/$YSFDOMAIN.conf
 sed -i "s/ysf-xlxd/ysf/g" /etc/apache2/sites-available/$YSFDOMAIN.conf
+chown -R www-data:www-data /var/www/ysf
 echo "--------------------------------------"
 echo "Enabling $XLXDOMAIN and $YSFDOMAIN... "
 echo "--------------------------------------"
