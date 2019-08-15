@@ -138,7 +138,7 @@ XLXCONFIG=/var/www/xlxd/pgs/config.inc.php
 sed -i "s/your_email/$EMAIL/g" $XLXCONFIG
 sed -i "s/LX1IQ/$CALLSIGN/g" $XLXCONFIG
 sed -i "s/\/tmp\/callinghome.php/\/xlxd\/callinghome.php/g" $XLXCONFIG
-sed -i "s/http:\/\/your_dashboard/$XLXDOMAIN/g" $XLXCONFIG
+sed -i "s/http:\/\/your_dashboard/http:\/\/$XLXDOMAIN/g" $XLXCONFIG
 chown -R www-data:www-data /xlxd/
 chown -R www-data:www-data /var/www/xlxd/
 echo "--------------------------------------"
