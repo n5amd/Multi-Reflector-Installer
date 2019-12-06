@@ -5,7 +5,7 @@
 # Be sure to add this to crontab via 'crontab -e' 
 # * * * * * /ysf2dmr/ysf2dmr-start.sh >/dev/null 2>&1
 # Since YSF2DMR doesnt have an init or unit file yet, we need
-# to start it via screen.
+# to start it via screen and this will do it for you and keep it alive.
 
 RUNMODE=wb2osz
 YSF2DMR="/ysf2dmr/YSF2DMR"
