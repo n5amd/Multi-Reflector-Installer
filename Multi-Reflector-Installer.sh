@@ -43,7 +43,7 @@ echo "--------------------------------------------------------------------------
 echo ""
 echo "XLX uses 3 digits numbers for its reflectors. For example: 032, 723, 099"
 read -p "What 3 digit XRF number will you be using?  " XRFDIGIT
-XFRNUM=XLX$XRFDIGIT
+XRFNUM=XLX$XRFDIGIT
 echo "--------------------------------------"
 read -p "What will the name of your YSF reflector be? 16 Characters MAX, this includes spaces. " YSFNAME
 YSFNAMEC=$(expr length "$YSFNAME")
@@ -129,7 +129,7 @@ wget -O /xlxd/dmrid.dat $XLXDMRIDURL
 cd $XLXINTDIR/
 cp -R $XLXINTDIR/xlxd/dashboard/* $XLXWEBDIR/
 cp $XLXINTDIR/xlxd/scripts/xlxd /etc/init.d/xlxd
-sed -i "s/ARGUMENTS=\"XLX999 192.168.1.240\"/ARGUMENTS=\"$XFRNUM $LOCAL_IP 127.0.0.1\"/g" /etc/init.d/xlxd
+sed -i "s/XLX999 192.168.1.240 127.0.0.1/$XRFNUM $LOCAL_IP 127.0.0.1/g" /etc/init.d/xlxd
 update-rc.d xlxd defaults
 #Delaying startup on boot
 mv /etc/rc3.d/S01xlxd /etc/rc3.d/S10xlxd
