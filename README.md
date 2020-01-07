@@ -1,4 +1,11 @@
-# Multi-Reflector-Installer (Proof of Concept)
+# This repo is outdated as of January 2020. 
+#### At the start of 2020 a new version of XLX was released that allows for native C4FM connections. This means it's even simpler to run a multi-mode reflector. XLX now natively supports DMR, D-Star, and C4FM. C4FM and DMR do not require any transcoding hardware (AMBE) to work together. If you plan on using D-Star with any of the other modes, you will need hardware AMBE chips. 
+
+##### If your goal is to build a system that supports D-Star, YSF, and DMR, then please see: https://github.com/n5amd/xlxd-debian-installer
+
+NOTE FOR BELOW: If you plan on using the scripts below anyway it will still work. Please take note that by using the latest version of XLX and YSFReflector, you will need to alter the default network ports as both applications use UDP 42000. 
+
+### Multi-Reflector-Installer (Proof of Concept)
 The script is very much currently a proof of concept and gets you about 90% of the way to have everything fully installed and configured. The concept is, This will build you a 3 mode ham radio digital voice reflector server that will transcode Yaesu Fusion, DMR, and D-Star with the help of AMBED and AMBE vocoder chips. I did not build each application. This script simply goes through the install steps for each application for you and configures apache for the dashboards. Features and abilities coming... If you are looking to only build an XLX reflector, possibly with transcoding, then look at my other project: https://github.com/n5amd/xlxd-debian-installer, this multi-reflector might be overkill for your needs. 
 
 #### This script will install the following:
