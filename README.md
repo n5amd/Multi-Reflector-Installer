@@ -91,18 +91,6 @@ screen -r ysf2dmr
  systemctl restart xlxd
  ```
  --------------------
-  
-#### To give you a visual idea of what the end result would look like, here are 2 scenarios..
-
-## Scenario A :
-Cloud Server installation allowing for worldwide connectivity like a typical reflector. Here is XLX410 as an example..
-
-![Reflector setup](https://n5amd.com/wp-content/uploads/2018/11/Local-XLX-Network.jpg)
-
-## Scenario B :
-A single tower site installation allowing local communication across 3 different digital modes…
-
-![Single Site](https://n5amd.com/wp-content/uploads/2018/11/Single-repeater-site.png)
 
 ### For more information, please visit:
 https://n5amd.com/digital-radio-how-tos/build-digital-voice-transcoding-server/
