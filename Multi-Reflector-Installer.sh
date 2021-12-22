@@ -38,7 +38,7 @@ YSF2INTDIR=/root/reflector-install-files/ysf2dmr
 YSFDASDIR=/root/reflector-install-files/ysfdash
 XLXWEBDIR=/var/www/xlxd
 YSFWEBDIR=/var/www/ysf
-DEP="git build-essential apache2 php libapache2-mod-php php7.0-mbstring screen wget"
+DEP="git build-essential apache2 php libapache2-mod-php php-mbstring screen wget"
 echo "------------------------------------------------------------------------------"
 echo ""
 echo "XLX uses 3 digits numbers for its reflectors. For example: 032, 723, 099"
